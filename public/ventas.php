@@ -9,6 +9,16 @@ $productos = Producto::obtenerTodos($pdo);
 $mensaje = null;
 $tipo = null;
 
+if (isset($_GET['ok'])) {
+    $mensaje = "Venta registrada correctamente";
+    $tipo = 'success';
+}
+
+if (isset($_GET['error'])) {
+    $mensaje = $_GET['error'];
+    $tipo = 'danger';
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $producto_id = $_POST['producto_id'] ?? '';
     $cantidad = $_POST['cantidad'] ?? '';
@@ -19,11 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($resultado['ok']) {
         // recargo las ventas despues de registrar
         $ventas = Venta::obtenerTodas($pdo);
-        $mensaje = $resultado['mensaje'];
-        $tipo = 'success';
+        header('Location: ventas.php?ok=1');
+        exit();
     } else {
-        $mensaje = $resultado['mensaje'];
-        $tipo = 'danger';
+        header('Location: ventas.php?error=' . urlencode($resultado['mensaje']));
+        exit();
     } 
 
 } 
@@ -117,4 +127,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 </div>
 </body>
+<script>
+    // limpia los parametros de la url sin recargar la pagina
+    if (window.location.search) {
+        window.history.replaceState(null, null, window.location.pathname);
+    }
+</script>
 </html>
