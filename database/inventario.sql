@@ -17,3 +17,14 @@ INSERT INTO productos (nombre, descripcion, precio, stock) VALUES
 ('Cuaderno universitario', 'Cuaderno de 100 hojas', 2.50, 50),
 ('Esfero azul', 'Esfero punta fina', 0.75, 100),
 ('Calculadora', 'Calculadora cientifica basica', 15.00, 20);
+
+-- Tabla de ventas
+CREATE TABLE IF NOT EXISTS ventas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    producto_id INT NOT NULL,
+    cantidad INT NOT NULL,
+    precio_unitario DECIMAL(10,2) NOT NULL,
+    total DECIMAL(10,2) NOT NULL,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (producto_id) REFERENCES productos(id)
+);
