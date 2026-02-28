@@ -13,10 +13,16 @@ class Venta
         $this->producto_id = trim($producto_id);
         $this->cantidad = trim($cantidad);
         $this->precio_unitario = trim($precio_unitario);
+        //$this->total = $this->cantidad * $this->precio_unitario;
+        
+        if (is_numeric($this->cantidad) && is_numeric($this->precio_unitario)) {
         $this->total = $this->cantidad * $this->precio_unitario;
+    } else {
+        $this->total = 0;
+    } 
     } //fin constructor
 
-    // validaciones basicas 
+    // validaciones
     public function validar()
     {
         if (empty($this->producto_id)) {
@@ -48,7 +54,7 @@ class Venta
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } //fin obtenerTodas
+    } 
 
 } //fin clase Venta
 ?>
