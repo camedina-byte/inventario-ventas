@@ -59,6 +59,16 @@ CREATE TABLE IF NOT EXISTS productos (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS ventas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    producto_id INT NOT NULL,
+    cantidad INT NOT NULL,
+    precio_unitario DECIMAL(10,2) NOT NULL,
+    total DECIMAL(10,2) NOT NULL,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (producto_id) REFERENCES productos(id)
+);
+
 INSERT INTO productos (nombre, descripcion, precio, stock) VALUES
 ('Cuaderno universitario', 'Cuaderno de 100 hojas', 2.50, 50),
 ('Esfero azul', 'Esfero punta fina', 0.75, 100),
@@ -71,26 +81,39 @@ INSERT INTO productos (nombre, descripcion, precio, stock) VALUES
 ├── /config
 │   └── database.php
 ├── /models
-│   └── Producto.php
+│   ├── Producto.php
+│   └── Venta.php
 ├── /controllers
-│   └── ProductoController.php
+│   ├── ProductoController.php
+│   └── VentaController.php
+├── /services
+│   └── VentaService.php
 ├── /public
 │   ├── index.php
 │   ├── productos.php
 │   ├── crear_producto.php
 │   ├── editar_producto.php
-│   └── eliminar_producto.php
+│   ├── eliminar_producto.php
+│   └── ventas.php
 ├── /database
 │   └── inventario.sql
+├── /screenshots
 └── README.md
 ```
 
 ## Funcionalidades
 
+### Módulo Productos
 - Listar productos
 - Crear producto con validaciones
 - Editar producto
 - Eliminar producto con confirmación
+
+### Módulo Ventas
+- Registrar venta seleccionando producto y cantidad
+- Descuento automático de stock al registrar venta
+- Validación de stock insuficiente
+- Historial de ventas con totales
 
 ## Capturas del sistema
 
@@ -105,6 +128,18 @@ INSERT INTO productos (nombre, descripcion, precio, stock) VALUES
 
 ### Editar producto
 ![Editar producto](screenshots/editar-producto.png)
+
+### Formulario de ventas
+![Ventas formulario](screenshots/ventas-formulario.png)
+
+### Historial de ventas
+![Ventas historial](screenshots/ventas-historial.png)
+
+### Validaciones de ventas
+![Venta sin producto](screenshots/venta-sin-producto.png)
+![Venta sin cantidad](screenshots/venta-sin-cantidad.png)
+![Venta cantidad negativa](screenshots/venta-cantidad-negativo.png)
+![Venta fuera de stock](screenshots/venta-fuera-stock.png)
 
 ## Autor
 
