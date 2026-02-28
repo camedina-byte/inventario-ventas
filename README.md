@@ -92,6 +92,22 @@ INSERT INTO productos (nombre, descripcion, precio, stock) VALUES
 - Editar producto
 - Eliminar producto con confirmación
 
+## Capturas del sistema
+
+### Lista de productos
+![Lista de productos](screenshots/lista-productos.png)
+
+### Crear producto
+![Crear producto](screenshots/crear-producto.png)
+
+### Validaciones
+![Validaciones](screenshots/validaciones.png)
+
+### Editar producto
+![Editar producto](screenshots/editar-producto.png)
+
 ## Autor
 
 Carlos Medina — Ingeniería en Sistemas Inteligentes — ECOTEC
+
+[def]: screenshots/editar-producto.png
