@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="bg-light">
 <div class="container mt-5">
     <div class="card shadow">
-        <div class="card-header bg-warning">
+        <div class="card-header text-white" style="background-color: #687f94;">
             <h4 class="mb-0">Editar Producto</h4>
         </div>
         <div class="card-body">
@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label class="form-label">Stock</label>
                     <input type="number" name="stock" class="form-control" value="<?php echo htmlspecialchars($stock); ?>">
                 </div>
-                <button type="submit" class="btn btn-warning w-100">Actualizar Producto</button>
+                <button type="submit" class="btn w-100 text-white" style="background-color: #687f94;">Actualizar Producto</button>
                 <a href="productos.php" class="btn btn-secondary w-100 mt-2">Cancelar</a>
             </form>
 
