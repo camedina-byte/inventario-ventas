@@ -42,7 +42,7 @@ base de datos: inventario_ventas
 
 4. Abrir el sistema en el navegador:
 ```
-http://localhost/inventario-ventas/public/productos.php
+http://localhost:8080/inventario-ventas/public/productos.php
 ```
 
 ## Script SQL
@@ -109,5 +109,3 @@ INSERT INTO productos (nombre, descripcion, precio, stock) VALUES
 ## Autor
 
 Carlos Medina — Ingeniería en Sistemas Inteligentes — ECOTEC
-
-[def]: screenshots/editar-producto.png
