@@ -19,6 +19,7 @@ $productos = Producto::obtenerTodos($pdo);
         </div>
         <div class="card-body">
             <a href="crear_producto.php" class="btn mb-3 text-white" style="background-color: #24b8e7;">+ Nuevo Producto</a>
+            <a href="ventas.php" class="btn mb-3 text-white" style="background-color: #0a5ca5;">Ver Ventas</a>
             <?php if (empty($productos)): ?>
                 <p class="text-muted">No hay productos registrados.</p>
             <?php else: ?>
